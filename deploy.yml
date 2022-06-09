@@ -1,0 +1,36 @@
+- name: "Installation de Nginx, git, curl "
+  become: yes
+  hosts: prod
+  tasks:
+    - name: "Udpdate packages"
+      yum:
+  name: httpd
+        state: latest
+    - name: "enable httpd and start"
+      service:
+  name: httpd
+        state: started
+        enabled: yes
+    - name: "allow http connexion on server"
+      firewalld:
+        service: httpd
+        state: enabled
+        permanent: yes
+
+     - name: "install nginx"
+       yum:
+         name: ['nginx']
+         state: latest
+     - name "install git"
+         name git
+         state: present
+         update_cache: yes
+     - name "install curl"
+
+
+    handlers:
+     - name: restart nginx
+      service:
+  name: nginx
+        state: restarted
+
