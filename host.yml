@@ -1,0 +1,14 @@
+all:
+  vars:
+    ansible_user: rke
+prod:
+  hosts:
+    client1:
+      ansible_password: nWBAX73kQ8udQVcL
+      ansible_host: 54.91.10.40
+    client2:
+      ansible_password: nWBAX73kQ8udQVcL
+      ansible_host: 3.84.206.74
+  vars:
+    env:production
+
